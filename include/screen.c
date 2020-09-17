@@ -25,8 +25,7 @@ void sclear() {
 
 void cinc() {
   if(cur->col == COL-1) {
-    cur->col = 0;
-    cur->row++;
+    cnewline();
   } else cur->col++;
 }
 
@@ -54,5 +53,42 @@ void print(char *string) {
 
 void cnewline() {
   cur->col = 0;
-  cur->row++;
+  if(cur->row+1 != ROW)
+    cur->row++;
+  else scrollup(1);
+  
+}
+
+void scrollup(int lines) {
+  u16int* video_memory = (u16int*) VIDEO_MEMORY_START;
+
+  u8int attributeByte = (0 << 4) | (15 & 0x0F);
+  u16int blank = 0x20 | (attributeByte << 8);
+
+  for(int j=0; j<lines; j++) {
+    for (int i = 0*80; i < 24*80; i++) {
+      video_memory[i] = video_memory[i+80];
+    }
+
+    for (int i=24*80; i<25*80; i++) {
+      video_memory[i] = blank;
+    }
+  }
+}
+
+void scrolldown(int lines) {
+  u16int* video_memory = (u16int*) VIDEO_MEMORY_START;
+
+  u8int attributeByte = (0 << 4) | (15 & 0x0F);
+  u16int blank = 0x20 | (attributeByte << 8);
+
+  for(int j=0; j<lines; j++) {
+    for (int i = 24*80-1; i >= 0; i--) {
+      video_memory[i+80] = video_memory[i];
+    }
+
+    for (int i=0; i<80; i++) {
+      video_memory[i] = blank;
+    }
+  }
 }

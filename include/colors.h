@@ -1,6 +1,9 @@
 #ifndef COLORS_H_INCLUDED
 #define COLORS_H_INCLUDED
 
+//that's a lot of colors combinations!
+//240 in total
+
 #define BLACK_ON_DARK_BLUE 0x10
 #define BLACK_ON_DARK_GREEN 0x20
 #define BLACK_ON_DARK_CYAN 0x30

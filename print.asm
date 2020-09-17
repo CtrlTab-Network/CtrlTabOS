@@ -1,5 +1,5 @@
 setup_segment:
-	mov cx, 0x07c0 ;shiftato a sinistra, originale 0x7c00
+	mov cx, 0x07c0 ;shifted to left, 0x7c00
 	mov ds, cx
 	ret
 
@@ -9,7 +9,7 @@ print_loop:
 	mov al, [bx]
 	cmp al, 0
 	je print_end
-	  
+
 	mov al, [bx]
 	int 0x10
 	inc bx
@@ -23,5 +23,5 @@ newline:
 	mov al, 13
 	int 0x10
 	ret
-  
+
 print_end ret
