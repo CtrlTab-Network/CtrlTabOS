@@ -56,7 +56,7 @@ void cnewline() {
   if(cur->row+1 != ROW)
     cur->row++;
   else scrollup(1);
-  
+
 }
 
 void scrollup(int lines) {
@@ -66,11 +66,11 @@ void scrollup(int lines) {
   u16int blank = 0x20 | (attributeByte << 8);
 
   for(int j=0; j<lines; j++) {
-    for (int i = 0*80; i < 24*80; i++) {
-      video_memory[i] = video_memory[i+80];
+    for (int i = 0*COL; i < (ROW-1)*COL; i++) {
+      video_memory[i] = video_memory[i+COL];
     }
 
-    for (int i=24*80; i<25*80; i++) {
+    for (int i=(ROW-1)*COL; i<ROW*COL; i++) {
       video_memory[i] = blank;
     }
   }
@@ -83,11 +83,11 @@ void scrolldown(int lines) {
   u16int blank = 0x20 | (attributeByte << 8);
 
   for(int j=0; j<lines; j++) {
-    for (int i = 24*80-1; i >= 0; i--) {
-      video_memory[i+80] = video_memory[i];
+    for (int i = (ROW-1)*COL-1; i >= 0; i--) {
+      video_memory[i+COL] = video_memory[i];
     }
 
-    for (int i=0; i<80; i++) {
+    for (int i=0; i<COL; i++) {
       video_memory[i] = blank;
     }
   }

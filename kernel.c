@@ -13,7 +13,7 @@ void main() { //main function
   print("FEATURING: ");
   printf("Plug_And_Cree", RED_ON_BLACK);
   print(" AND ");
-  printf("MRtecno98\n\n\n\n\n\n\n\n", GREEN_ON_BLACK);
+  printf("MRtecno98", GREEN_ON_BLACK);
 
   scrolldown(2); //2 is the number of lines to scroll
   //scrollup(1);
