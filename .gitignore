@@ -3,3 +3,4 @@
 *.o
 os-image.bin
 *.map
+**/desktop.ini
