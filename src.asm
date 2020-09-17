@@ -33,12 +33,12 @@ call switch_to_pm      ;switch to 32bit protected mode
 loop:
 	jmp loop
 
-%include "labels.asm"
-%include "print.asm"
-%include "disk_load.asm"
-%include "gdt.asm"
-%include "protected_mode.asm"
-%include "src32.asm"
+%include "./asm/real/labels.asm"
+%include "./asm/real/print.asm"
+%include "./asm/real/disk_load.asm"
+%include "./asm/real/gdt.asm"
+%include "./asm/protected/protected_mode.asm"
+%include "./asm/protected/src32.asm"
 
 BOOT_DRIVE db 0
 
